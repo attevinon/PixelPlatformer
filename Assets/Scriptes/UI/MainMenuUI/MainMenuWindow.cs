@@ -51,7 +51,8 @@ public class MainMenuWindow : MonoBehaviour
             _showAnimation = _rectTransform
                 .DOScale(1f, _scaleDuration)
                 .From(0f)
-                .SetEase(Ease.OutBack);
+                .SetEase(Ease.OutBack)
+                .SetDelay(_showDelay);
             _showAnimation.SetAutoKill(false);
             _showAnimation.Play();
             Debug.Log("Shown from " + gameObject.name);
