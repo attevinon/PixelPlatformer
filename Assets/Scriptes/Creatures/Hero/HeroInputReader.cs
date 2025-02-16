@@ -1,11 +1,13 @@
-﻿using UnityEngine;
+﻿using PixelCrew.UI;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace PixelCrew.Creatures.Hero
 {
     public class HeroInputReader : MonoBehaviour
     {
-        [SerializeField] private HeroScript _hero;
+        [SerializeField] private InGameMenu _menu;
+        private HeroScript _hero;
 
         private void Awake()
         {
@@ -56,6 +58,14 @@ namespace PixelCrew.Creatures.Hero
         {
             var direction = callback.ReadValue<Vector2>();
             _hero.SetDirection(direction);
+        }
+
+        public void OnEscapeInput(InputAction.CallbackContext callback)
+        {
+            if (callback.performed)
+            {
+                _menu.Show();
+            }
         }
     }
 }

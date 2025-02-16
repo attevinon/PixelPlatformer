@@ -3,14 +3,15 @@ using DG.Tweening;
 using PixelCrew.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(RectTransform))]
 [RequireComponent(typeof(CanvasGroup))]
 public class MainMenuWindow : MonoBehaviour
 {
     [SerializeField, Range(0,2)] private float _showDelay;
-    [SerializeField, Range(0,2)] private float _scaleDuration;
-    [SerializeField, Range(0,2)] private float _fadeDuartion;
+    [SerializeField, Range(0,2)] private float _scaleDuration; 
+    [SerializeField, Range(0,2)] private float _fadeDuration;
     [SerializeField, Range(0,2)] private float _moveDuration;
     private Canvas _canvas;
     private RectTransform _rectTransform;
@@ -125,7 +126,7 @@ public class MainMenuWindow : MonoBehaviour
         _hideAnimation = DOTween.Sequence();
         _hideAnimation
             .Append(_canvasGroup
-                .DOFade(0f, _fadeDuartion)
+                .DOFade(0f, _fadeDuration)
                 .From(1f)
                 .SetEase(Ease.InOutSine))
             .Join(_rectTransform

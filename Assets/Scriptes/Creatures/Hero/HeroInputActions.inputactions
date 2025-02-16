@@ -52,6 +52,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ShowMenu",
+                    "type": "Button",
+                    "id": "f8de7f5f-9a3f-463f-a867-2dd3fb9096ca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -217,6 +225,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "UseHealPotion",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68fe3829-5246-46df-acd9-5e0232ca9829",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShowMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
