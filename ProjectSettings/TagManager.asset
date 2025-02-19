@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Heavy
   - Enemy
+  - SoundsAudioSource
   layers:
   - Default
   - TransparentFX

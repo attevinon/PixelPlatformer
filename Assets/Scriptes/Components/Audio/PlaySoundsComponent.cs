@@ -4,17 +4,20 @@ using UnityEngine;
 namespace PixelCrew.Components.Audio
 {
     public class PlaySoundsComponent : MonoBehaviour
-    {
-        [SerializeField] private AudioSource _source;
+    { 
         [SerializeField] private AudioData[] _sounds;
+        private AudioSource _audioSource;
 
         public void PlaySound(string id)
         {
             foreach (var sound in _sounds)
             {
                 if (sound.Id != id) continue;
+                
+                if (_audioSource == null)
+                    _audioSource = GameObject.FindWithTag("SoundsAudioSource").GetComponent<AudioSource>();
 
-                _source.PlayOneShot(sound.Clip);
+                _audioSource.PlayOneShot(sound.Clip);
                 break;
             }
         }
