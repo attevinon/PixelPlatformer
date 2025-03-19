@@ -3,6 +3,8 @@
     public enum ScenesNames
     {
         MainMenu = 0,
-        Level_1
+        HUD,
+        Level_Mobs,
+        Level_Ship
     }
 }

@@ -93,7 +93,7 @@ namespace PixelCrew.UI.MainMenu
 
         public void OnPlayClicked()
         {
-            Hide(() => SceneManager.LoadScene(ScenesNames.Level_1.ToString()));
+            Hide(() => SceneManager.LoadScene(ScenesNames.Level_Mobs.ToString()));
             
         }
 

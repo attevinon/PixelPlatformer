@@ -4984,7 +4984,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2244786681484811427}
-        m_MethodName: TakeHealing
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5195,6 +5195,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c633de9e-7eb1-41d6-bc4e-569c58577101
     m_ActionName: Hero/Use[/Keyboard/h]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f8de7f5f-9a3f-463f-a867-2dd3fb9096ca
+    m_ActionName: Hero/ShowMenu[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero

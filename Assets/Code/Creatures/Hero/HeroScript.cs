@@ -5,6 +5,7 @@ using PixelCrew.Components.Interactions;
 using PixelCrew.Components.Health;
 using PixelCrew.Model;
 using PixelCrew.Utils;
+using UnityEngine.SceneManagement;
 
 namespace PixelCrew.Creatures.Hero
 {
