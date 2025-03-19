@@ -1,8 +1,14 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Defs/PlayerDef", fileName = "PlayerDef")]
-public class PlayerDef : ScriptableObject
+namespace PixelCrew.Model.Definitions
 {
-    [SerializeField] private int _inventorySize;
-    public int InventorySize => _inventorySize;
+    [CreateAssetMenu(menuName = "Defs/PlayerDef", fileName = "PlayerDef")]
+
+    public class PlayerDef : ScriptableObject
+    {
+        [SerializeField] private int _inventorySize;
+        [SerializeField] private int _maxHealth;
+        public int InventorySize => _inventorySize;
+        public int MaxHealth => _maxHealth;
+    }
 }
