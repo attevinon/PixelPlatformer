@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using PixelCrew.Model;
-using PixelCrew.Model.Data;
+using PixelCrew.Model.Data.Inventory;
 
 namespace PixelCrew.Components.Interactions
 {

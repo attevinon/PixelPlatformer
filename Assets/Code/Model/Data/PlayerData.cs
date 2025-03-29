@@ -1,6 +1,6 @@
 ﻿using PixelCrew.Model.Data.Properties;
-using PixelCrew.Model.Data;
 using System;
+using PixelCrew.Model.Data.Inventory;
 using UnityEngine;
 
 namespace PixelCrew.Model

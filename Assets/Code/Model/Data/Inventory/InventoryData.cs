@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PixelCrew.Model.Definitions;
 
-namespace PixelCrew.Model.Data
+namespace PixelCrew.Model.Data.Inventory
 {
     [Serializable]
     public class InventoryData
@@ -11,6 +11,12 @@ namespace PixelCrew.Model.Data
         [SerializeField] private List<InventoryItemData> _inventory = new List<InventoryItemData>();
 
         public event Action<string, int> OnInventoryChanged;
+
+        public IReadOnlyItemData[] GetAll()
+        {
+            var readOnlyInventory = _inventory.ToArray();
+            return readOnlyInventory as IReadOnlyItemData[];
+        }
 
         public bool TryAdd(string id, int value)
         {
@@ -153,18 +159,6 @@ namespace PixelCrew.Model.Data
                 return true;
             }
             return false;
-        }
-    }
-
-    [Serializable]
-    public class InventoryItemData
-    {
-        [InventoryId] public string Id;
-        public int Value;
-
-        public InventoryItemData(string id)
-        {
-            Id = id;
         }
     }
 }

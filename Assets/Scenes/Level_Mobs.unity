@@ -24116,7 +24116,11 @@ MonoBehaviour:
       _value: 0
   _data:
     _inventory:
-      _inventory: []
+      _inventory:
+      - Id: coin
+        Value: 10
+      - Id: key
+        Value: 1
     Health:
       _value: 10
 --- !u!4 &1371243478

@@ -27,5 +27,12 @@ namespace PixelCrew.Model.Data.Properties
             OnChanged += call;
             return new ActionDisposable(() => OnChanged -= call);
         }
+
+        public IDisposable SubscribeAndInvoke(OnPropertyChanged call)
+        {
+            OnChanged += call;
+            call?.Invoke(_value);
+            return new ActionDisposable(() => OnChanged -= call);
+        }
     }
 }

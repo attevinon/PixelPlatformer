@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using PixelCrew.Model;
-using PixelCrew.Model.Data;
+using PixelCrew.Model.Data.Inventory;
 using UnityEngine.Events;
 
 namespace PixelCrew.Components.Collectables

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using PixelCrew.Model.Data.Inventory;
+using UnityEngine;
 using PixelCrew.Model.Definitions;
 using UnityEngine.Events;
 using PixelCrew.Utils;

@@ -4,6 +4,7 @@ using PixelCrew.Components.ColliderBased;
 using PixelCrew.Components.Interactions;
 using PixelCrew.Components.Health;
 using PixelCrew.Model;
+using PixelCrew.Model.Data.Inventory;
 using PixelCrew.Utils;
 using UnityEngine.SceneManagement;
 

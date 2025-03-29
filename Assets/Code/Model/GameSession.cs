@@ -1,4 +1,5 @@
-﻿using PixelCrew.Utils;
+﻿using PixelCrew.Model.Data.Inventory;
+using PixelCrew.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ namespace PixelCrew.Model
         [SerializeField] private PlayerData _save;
         [SerializeField] private PlayerData _data;
         public PlayerData Data => _data;
+        public QuickInventoryData QuickInventory { get; private set; }
 
         void Awake()
         {
@@ -21,8 +23,14 @@ namespace PixelCrew.Model
             else
             {
                 Save();
+                LoadModel();
                 DontDestroyOnLoad(this);
             }
+        }
+
+        private void LoadModel()
+        {
+            QuickInventory = new QuickInventoryData(_data);
         }
 
         private void LoadHUD()
