@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using PixelCrew.Utils.Disposables;
+using UnityEngine;
 
 namespace PixelCrew.Model.Data.Properties
 {
@@ -18,6 +20,12 @@ namespace PixelCrew.Model.Data.Properties
                 
                 OnChanged?.Invoke(value);
             }
+        }
+        
+        public IDisposable Subscribe(OnPropertyChanged call)
+        {
+            OnChanged += call;
+            return new ActionDisposable(() => OnChanged -= call);
         }
     }
 }

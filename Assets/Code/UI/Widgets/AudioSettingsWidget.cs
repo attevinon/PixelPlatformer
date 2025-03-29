@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using PixelCrew.Model.Data.Properties;
+using PixelCrew.Utils.Disposables;
 
 namespace PixelCrew.UI.Widgets
 {
     public class AudioSettingsWidget : MonoBehaviour
     {
+        private readonly CompositeDisposable _trash = new CompositeDisposable();
+        
         [SerializeField] private Slider _slider;
         [SerializeField] private Text _valueText;
 
@@ -14,10 +17,9 @@ namespace PixelCrew.UI.Widgets
         public void Initialize(FloatPersistentProperty model)
         {
             _model = model;
-            _model.OnChanged += OnModelValueChanged;
-            _slider.onValueChanged.AddListener(OnSliderValueChanged);
+            _trash.Retain(_model.Subscribe(OnModelValueChanged));
+            _trash.Retain(_slider.onValueChanged.Subscribe(OnSliderValueChanged));
             UpdateView(model.Value);
-            
         }
 
         private void OnModelValueChanged(float newValue, float oldValue)
@@ -38,8 +40,7 @@ namespace PixelCrew.UI.Widgets
 
         private void OnDestroy()
         {
-            _model.OnChanged -= OnModelValueChanged;
-            _slider.onValueChanged.RemoveListener(OnSliderValueChanged);
+            _trash.Dispose();
         }
     }
 }
