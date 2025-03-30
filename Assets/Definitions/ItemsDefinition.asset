@@ -14,26 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _items:
   - _id: coin
-    _isStackable: 1
     _icon: {fileID: -240399129463944129, guid: 17e8ed60961a1924facc7c4f240b5f7d, type: 3}
+    _tags: 00000000
     OnUse:
       m_PersistentCalls:
         m_Calls: []
   - _id: sword
-    _isStackable: 1
     _icon: {fileID: 21300000, guid: 091a861158463654d96aed3444f6c09a, type: 3}
+    _tags: 000000000100000002000000
     OnUse:
       m_PersistentCalls:
         m_Calls: []
   - _id: key
-    _isStackable: 0
     _icon: {fileID: 21300000, guid: 6467582cd766a404280dc2fc2bf72cd2, type: 3}
+    _tags: 
     OnUse:
       m_PersistentCalls:
         m_Calls: []
   - _id: potion
-    _isStackable: 1
     _icon: {fileID: 3714227102187029162, guid: 357c1b97c8f1ee645b00fc261a335be9, type: 3}
+    _tags: 0000000002000000
     OnUse:
       m_PersistentCalls:
         m_Calls:

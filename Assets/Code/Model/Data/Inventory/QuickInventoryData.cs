@@ -1,5 +1,6 @@
 ﻿using System;
 using PixelCrew.Model.Data.Properties;
+using PixelCrew.Model.Definitions;
 using PixelCrew.Utils.Disposables;
 using UnityEngine;
 
@@ -10,18 +11,18 @@ namespace PixelCrew.Model.Data.Inventory
         public event Action OnChanged;
         
         private PlayerData _playerData;
-        private IReadOnlyItemData[] _quickInventory;
+        private IReadOnlyItemData[] _inventory;
         private IntObservableProperty _selectedIndex = new IntObservableProperty();
-
+        private ItemTag _itemsInQuickInventoryTag;
         public IntObservableProperty SelectedIndex => _selectedIndex;
 
-        public IReadOnlyItemData[] Inventory => _quickInventory;
+        public IReadOnlyItemData[] Inventory => _inventory;
         
         public QuickInventoryData(PlayerData playerData)
         {
             _playerData = playerData;
-            _quickInventory = _playerData.Inventory.GetAll();
-            
+            _itemsInQuickInventoryTag = ItemTag.Usable;
+            _inventory = _playerData.Inventory.GetAll(_itemsInQuickInventoryTag);
             _playerData.Inventory.OnInventoryChanged += OnInventoryChanged;
         }
 
@@ -32,9 +33,17 @@ namespace PixelCrew.Model.Data.Inventory
         }
         private void OnInventoryChanged(string id, int value)
         {
-            _quickInventory = _playerData.Inventory.GetAll();
-            _selectedIndex.Value = Mathf.Clamp(_selectedIndex.Value, 0, _quickInventory.Length - 1);
+            var itemDef = DefsFacade.I.ItemsDef.Get(id);
+            if(!itemDef.HasTag(_itemsInQuickInventoryTag)) return;
+            
+            _inventory = _playerData.Inventory.GetAll(_itemsInQuickInventoryTag);
+            _selectedIndex.Value = Mathf.Clamp(_selectedIndex.Value, 0, _inventory.Length - 1);
             OnChanged?.Invoke();
+        }
+
+        public void SetNextItem()
+        {
+            SelectedIndex.Value = (int) Mathf.Repeat(SelectedIndex.Value + 1, _inventory.Length);
         }
     }
 }

@@ -257,5 +257,10 @@ namespace PixelCrew.Creatures.Hero
         {
             _session.Data.Inventory.OnInventoryChanged -= OnInventoryChanged;
         }
+
+        public void HextItem()
+        {
+            _session.QuickInventory.SetNextItem();
+        }
     }
 }

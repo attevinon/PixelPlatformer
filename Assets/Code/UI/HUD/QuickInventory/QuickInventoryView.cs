@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace PixelCrew.UI.HUD.QuickInventory
 {
-    public class QuickInventory : MonoBehaviour
+    public class QuickInventoryView : MonoBehaviour
     {
         [SerializeField] private Transform _itemsContainer;
         [SerializeField] private InventoryItemWidget _itemPrefab;

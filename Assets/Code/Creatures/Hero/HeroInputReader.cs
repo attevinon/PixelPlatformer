@@ -67,5 +67,11 @@ namespace PixelCrew.Creatures.Hero
                 _menu.Show();
             }
         }
+
+        public void OnNextItem(InputAction.CallbackContext callback)
+        {
+            if (callback.performed)
+                _hero.HextItem();
+        }
     }
 }

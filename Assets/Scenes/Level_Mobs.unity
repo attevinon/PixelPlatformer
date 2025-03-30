@@ -24117,10 +24117,8 @@ MonoBehaviour:
   _data:
     _inventory:
       _inventory:
-      - Id: coin
-        Value: 10
-      - Id: key
-        Value: 1
+      - Id: potion
+        Value: 3
     Health:
       _value: 10
 --- !u!4 &1371243478

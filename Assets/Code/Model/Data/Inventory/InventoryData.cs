@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using PixelCrew.Model.Definitions;
 
@@ -12,10 +13,16 @@ namespace PixelCrew.Model.Data.Inventory
 
         public event Action<string, int> OnInventoryChanged;
 
-        public IReadOnlyItemData[] GetAll()
+        public IReadOnlyItemData[] GetAll(params ItemTag[] _tags)
         {
-            var readOnlyInventory = _inventory.ToArray();
-            return readOnlyInventory as IReadOnlyItemData[];
+            var filtratedInventory = new List<IReadOnlyItemData>();
+            foreach (var itemData in _inventory)
+            {
+                var itemDef = DefsFacade.I.ItemsDef.Get(itemData.Id);
+                bool isAllRequirementsMet = _tags.All(x => itemDef.HasTag(x));
+                if(isAllRequirementsMet) filtratedInventory.Add(itemData);
+            }
+            return filtratedInventory.ToArray();
         }
 
         public bool TryAdd(string id, int value)
@@ -24,7 +31,7 @@ namespace PixelCrew.Model.Data.Inventory
             if (value <= 0) return false;
 
             var itemDef = DefsFacade.I.ItemsDef.Get(id);
-            if (itemDef.IsStackable)
+            if (itemDef.HasTag(ItemTag.Stackable))
             {
                 TryAddStackable(id, value);
             }
@@ -67,7 +74,7 @@ namespace PixelCrew.Model.Data.Inventory
         {
             if (IsNoDef(id)) return;
 
-            bool isSucces = DefsFacade.I.ItemsDef.Get(id).IsStackable ?
+            bool isSucces = DefsFacade.I.ItemsDef.Get(id).HasTag(ItemTag.Stackable) ?
                 TryRemoveStackable(id, value) : TryRemoveNonStackable(id, value);
             if(isSucces)
                 OnInventoryChanged?.Invoke(id, Count(id));

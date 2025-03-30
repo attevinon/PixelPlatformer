@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -29,12 +30,12 @@ namespace PixelCrew.Model.Definitions
     public struct ItemDef
     {
         [SerializeField] private string _id;
-        [SerializeField] private bool _isStackable;
         [SerializeField] private Sprite _icon;
+        [SerializeField] private ItemTag[] _tags;
         [SerializeField] public UnityEvent OnUse;
         public string Id => _id;
-        public bool IsStackable => _isStackable;
         public Sprite Icon => _icon;
+        public bool HasTag(ItemTag tag) => _tags.Contains(tag);
         public bool IsVoid => string.IsNullOrEmpty(_id);
     }
 }

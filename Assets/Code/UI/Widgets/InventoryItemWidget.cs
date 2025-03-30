@@ -19,7 +19,7 @@ namespace PixelCrew.UI.Widgets
         {  
             ItemDef itemDef = DefsFacade.I.ItemsDef.Get(itemData.GetId());
             _icon.sprite = itemDef.Icon;
-            _value.text = itemDef.IsStackable ? itemData.GetValue().ToString() : String.Empty;
+            _value.text = itemDef.HasTag(ItemTag.Stackable) ? itemData.GetValue().ToString() : String.Empty;
             _index = index;
         }
         
